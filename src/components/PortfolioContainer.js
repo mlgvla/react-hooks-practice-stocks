@@ -1,15 +1,18 @@
-import React from "react";
-import Stock from "./Stock";
+import React from "react"
+import Stock from "./Stock"
+import { v4 as uuid } from 'uuid'
 
-function PortfolioContainer() {
+function PortfolioContainer({ stocks, onStockClick }) {
+  const portfolioStockList = stocks.map(stock => (
+    <Stock key={uuid()} stock={stock} onStockClick={onStockClick} />
+  ))
+
   return (
     <div>
       <h2>My Portfolio</h2>
-      {
-        //render your portfolio stocks here
-      }
+      {portfolioStockList}
     </div>
-  );
+  )
 }
 
-export default PortfolioContainer;
+export default PortfolioContainer
